@@ -24,20 +24,26 @@
             <div class="flex justify-center border-b border-t border-r border-gray-700">
                 <p>Nom</p>
             </div>
-            <!-- foreach -->
+            <!-- foreach --> 
+            {% for praticien in praticiens %}
+            
             <div class="flex justify-center border-b border-r border-gray-700">
-                <p>Nom</p>
+                <p>{{praticien.nom}}</p>
             </div>
+            {% endfor %} 
         </div>
         <!-- 2 -->
+       
         <div>
             <div class="flex justify-center border-b border-t border-gray-700">
-                <p>Ville</p>
+                <p></p>
             </div>
             <!-- foreach -->
+            {% for praticien in praticiens %}
             <div class="flex justify-center border-b border-gray-700">
-                <p>Ville</p>
+                <p>{{praticien.ville}}</p>
             </div>
+            {% endfor %}
         </div>     
     </div>
 
