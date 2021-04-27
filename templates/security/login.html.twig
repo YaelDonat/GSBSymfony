@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{parent()}}Connexion{% endblock %}
+
+{% block navbar %}{% endblock %}
+{% block content %}
+
+    <!-- component -->
+<body>
+    <section class="min-h-screen flex items-stretch text-white ">
+        <div class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center" style="background-image: url(https://www.wallpapertip.com/wmimgs/48-487775_medical-hd-wallpaper-1080p-1080p-medical-wallpaper-hd.jpg);">
+            <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
+            <div class="w-full px-24 z-10">
+              <img src="{{ asset('/images/gsblogo.png')}}" alt="">
+            </div>
+
+        </div>
+        <div class="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0" style="background-color: #161616;">
+            <div class="absolute lg:hidden z-10 inset-0 bg-gray-500 bg-no-repeat bg-cover items-center" style="background-image: url(https://www.wallpapertip.com/wmimgs/48-487775_medical-hd-wallpaper-1080p-1080p-medical-wallpaper-hd.jpg);">
+                <div class="absolute bg-black opacity-60 inset-0 z-0"></div>
+            </div>
+            <div class="w-full py-6 z-20">
+                
+                 <form action="{{ path('login') }}" method="POST" class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
+                    <div class="pb-2 pt-4 text-gray-900">
+                        <input class="m-2 p-2 rounded-md" type="text" name="_username" value="{{ last_username }}" placeholder="Pseudo">
+                    </div>
+                    <div class="pb-2 pt-4 text-gray-900">
+                       <input class="m-2 p-2 rounded-md" type="password" name="_password" placeholder="Mot de passe">
+                    </div>
+                    <div class="text-right text-gray-400 hover:underline hover:text-gray-100">
+                        <a href="#">Mot de passe oublié ?</a>
+                    </div>
+                    <div class="px-4 pb-2 pt-4">
+                        <button class="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none">Connexion</button>
+                    </div>
+
+                </form>
+{% if error %}
+      <!-- component -->
+        <div class="grid grid-cols-1 gap-2 justify-center items-center">
+            <!-- Danger -->
+            <div class='flex items-center justify-center text-white max-w-sm w-full bg-red-400 shadow-md rounded-lg overflow-hidden mx-auto'>
+                <div class='w-10 border-r px-2'>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636">
+                        </path>
+                    </svg>
+                </div>
+
+                <div class='flex items-center px-2 py-3'>
+
+
+                    <div class='mx-3'>
+                        <p>Identifiants incorrects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+            </div>
+        </div>
+    </section>
+</body>
+
+    
+
+{% endblock %}
+{% block footer %}{% endblock %}
