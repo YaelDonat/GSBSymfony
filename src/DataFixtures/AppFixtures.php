@@ -6,6 +6,9 @@ use App\Entity\Delegue;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+use Faker\Factory;
+
 class AppFixtures extends Fixture
 {
     private $encoder;
@@ -25,9 +28,20 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
 
+
+
+}
+
+
     abstract class BaseFixture extends Fixture
 {
+/** @var Generator */
     protected $faker;
-}
+
+    public function load(ObjectManager $manager)
+    {
+        $this->manager = $manager;
+        $this->faker = Factory::create();
+    }
 
 }
