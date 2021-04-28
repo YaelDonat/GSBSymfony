@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{parent()}}Ajouter Compte-rendu
+{% endblock %}
+
+{% block content %}
+
+	<div class="w-full h-screen object-center">
+		<div class="flex justify-center mt-24">
+
+
+			{{form_start(form)}}
+
+			<div class="row">
+				<div class="col md-4 w-full ">
+					{{ form_row(form.bilan) }}
+				</div>
+			</div>
+
+			{{form_rest(form)}}
+
+			<button class="uppercase mx-auto block w-1/2 mt-10 p-4 text-sm rounded-lg bg-indigo-500 hover:bg-indigo-600 focus:outline-none">Ajouter</button>
+			{{form_end(form)}}
+		</div>
+	</div>
+
+{% endblock %}

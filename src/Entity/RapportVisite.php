@@ -23,12 +23,12 @@ class RapportVisite
     private $bilan;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=50)
      */
     private $dateVisite;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="string", length=50)
      */
     private $dateRapport;
 
@@ -37,6 +37,12 @@ class RapportVisite
      * @ORM\JoinColumn(nullable=false)
      */
     private $visiteur;
+
+     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $etat;
+
 
     public function getId(): ?int
     {
@@ -55,24 +61,24 @@ class RapportVisite
         return $this;
     }
 
-    public function getDateVisite(): ?\DateTimeInterface
+    public function getDateVisite(): ?string
     {
         return $this->dateVisite;
     }
 
-    public function setDateVisite(\DateTimeInterface $dateVisite): self
+    public function setDateVisite(string $dateVisite): self
     {
         $this->dateVisite = $dateVisite;
 
         return $this;
     }
 
-    public function getDateRapport(): ?\DateTimeInterface
+    public function getDateRapport(): ?string
     {
         return $this->dateRapport;
     }
 
-    public function setDateRapport(\DateTimeInterface $dateRapport): self
+    public function setDateRapport(string $dateRapport): self
     {
         $this->dateRapport = $dateRapport;
 
@@ -87,6 +93,18 @@ class RapportVisite
     public function setVisiteur(?Visiteur $visiteur): self
     {
         $this->visiteur = $visiteur;
+
+        return $this;
+    }
+
+    public function getEtat(): ?bool
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(bool $etat): self
+    {
+        $this->etat = $etat;
 
         return $this;
     }

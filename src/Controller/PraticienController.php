@@ -29,4 +29,37 @@ class PraticienController extends AbstractController
             'praticiens' => $praticien,
         ]);
     }
+
+    /** 
+     * @Route("/praticienconf", name="praticienconf")
+     */
+    public function conf(): Response
+    {
+        $praticiens = $this->repository->findBy(array(),array('coefConfiance' => 'DESC'));
+        return $this->render('praticien/index.html.twig', [
+            'praticiens' => $praticiens,
+        ]);
+    }
+
+    /**
+     * @Route("/praticientmpsec", name="praticientmpsec")
+     */
+    public function tmpsec(): Response
+    {
+        $praticiens = $this->repository->findBy(array(),array('coefConfiance' => 'DESC'));
+        return $this->render('praticien/index.html.twig', [
+            'praticiens' => $praticiens,
+        ]);
+    }
+
+    /**
+     * @Route("/praticiennot", name="praticiennot")
+     */
+    public function not(): Response
+    {
+        $praticiens = $this->repository->findBy(array(),array('coefNotoriete' => 'DESC'));
+        return $this->render('praticien/index.html.twig', [
+            'praticiens' => $praticiens,
+        ]);
+    }
 }

@@ -12,31 +12,41 @@
 			<div class="m-5">
 				<h5 class="text-xl text-gray-900 flex justify-center">
 					Compte rendu num :
+					{{rapportvisite.id}}
 				</h5>
 				<p>
 					Nom :
+					{{rapportvisite.visiteur.nom}}
+
 				</p>
 				<p>
 					Ville :
+					{{rapportvisite.visiteur.ville}}
 				</p>
 				<p>
 					Date Visite :
+					{{rapportvisite.dateVisite}}
 				</p>
 				<p>
 					Date Rédaction :
+					{{rapportvisite.dateRapport}}
 				</p>
 				<p>
-					Coefficients de confiance :
+					Coefficients de Notoriété :
+					{{rapportvisite.visiteur.praticien.coefNotoriete}}
 				</p>
 				<p>
-					Motifs :
+					Coefficients de Confiance :
+					{{rapportvisite.visiteur.praticien.coefConfiance}}
 				</p>
 				<p>
 					Bilan :
+
 				</p>
-				<textarea class="h-auto select-none w-full border-gray-900 rounded-lg resize-none bg-gray-200" readonly></textarea>
+				<textarea class="h-auto select-none w-full border-gray-900 rounded-lg resize-none bg-gray-200" readonly>{{rapportvisite.bilan}}</textarea>
 				<p>
 					Matricule :
+					{{rapportvisite.visiteur.id}}
 				</p>
 			</div>
 		</div>

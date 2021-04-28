@@ -15,15 +15,30 @@
 				<form action="" class="grid grid-flow-row gap-5">
 					<div>
 						<label>Sélectionner visiteur</label>
-						<select class="w-full" name="" id=""></select>
+						<select class="w-full" name="visiteur" id="">
+							{% for visiteur in visiteurs %}
+								<option value="{{ visiteur.id }}">{{ visiteur.nom }}
+									{{ visiteur.prenom }}</option>
+							{% endfor %}
+						</select>
 					</div>
 					<div>
 						<label>Mois</label>
-						<select class="w-full" name="" id=""></select>
+
+						<select class="w-full" name="mois" id="">
+							{% for i in 1..12 %}
+								<option value="{{ i }}">{{ i }}</option>
+							{% endfor %}
+						</select>
 					</div>
+
 					<div>
 						<label>Année</label>
-						<select class="w-full" name="" id=""></select>
+						<select class="w-full" name="annee" id="">
+							{% for i in 1950..2021 %}
+								<option value="{{ i }}">{{ i }}</option>
+							{% endfor %}
+						</select>
 					</div>
 					<div>
 						<button class="transition duration-500 bg-green-500 text-white w-full rounded-md hover:bg-green-600" type="submit">Afficher</button>
@@ -37,30 +52,40 @@
 
 					<div class="m-3">
 						<table class="table-auto w-full">
+							{% for rapportvisite in rapportvisites %}
+								<tr
+									class="">
+									{# foreach #}
+									<td class="border border-black p-1 ">
+										<p class="flex justify-center">{{rapportvisite.visiteur.praticien.nom}}</p>
+									</td>
 
-							<tr
-								class="">
-								{# foreach #}
-								<td class="border border-black p-1 ">
-									<p class="flex justify-center">Praticien</p>
-								</td>
-								<td class="border border-black p-1 ">
-									<p class="flex justify-center">Ville</p>
-								</td>
-								<td class="border border-black p-1 ">
-									<p class="flex justify-center">Date Visite</p>
-								</td>
-								<td class="border border-black p-1 ">
-									<p class="flex justify-center">Date Rédaction</p>
-								</td>
-								<td class="border border-black p-1 ">
-									<p class="flex justify-center">Lu</p>
-								</td>
-								<td class="border border-black p-1">
-									<a class="transition duration-500 bg-indigo-500 text-white flex justify-center rounded-md hover:bg-indigo-600 m-1 p-1" href="/compterendu/show">Consulter</a>
-								</td>
-							</tr>
+									<td class="border border-black p-1 ">
+										<p class="flex justify-center">{{rapportvisite.visiteur.praticien.ville}}</p>
+									</td>
 
+
+									<td class="border border-black p-1 ">
+										<p class="flex justify-center">Date Visite</p>
+									</td>
+
+
+									<td class="border border-black p-1 ">
+										<p class="flex justify-center">Date Rédaction</p>
+									</td>
+
+
+									<td class="border border-black p-1 ">
+										<p class="flex justify-center">Lu</p>
+									</td>
+
+
+									<td class="border border-black p-1">
+										<a class="transition duration-500 bg-indigo-500 text-white flex justify-center rounded-md hover:bg-indigo-600 m-1 p-1" href="/compterendu/show/{{rapportvisite.id}}">Consulter</a>
+									</td>
+
+								</tr>
+							{% endfor %}
 						</table>
 					</div>
 				</div>
