@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\RapportVisiteRepository;
 use App\Repository\VisiteurRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use function PHPSTORM_META\type;
 
@@ -18,10 +19,11 @@ class CompteRenduController extends AbstractController
     private $repositoryrapport;
     private $repositoryvisiteur;
 
-    public function __construct(RapportVisiteRepository $repositoryrapport, VisiteurRepository $repositoryvisiteur)
+    public function __construct(RapportVisiteRepository $repositoryrapport, VisiteurRepository $repositoryvisiteur, EntityManagerInterface $em)
     {
         $this->repositoryrapport=$repositoryrapport;
         $this->repositoryvisiteur=$repositoryvisiteur;
+        $this->em=$em;
     }
 
     /**
@@ -40,6 +42,8 @@ class CompteRenduController extends AbstractController
      */
     public function show(RapportVisite $rapportvisite): Response
     {
+        $rapportvisite->setEtat(true);
+        $this->em->flush();
         $rapportvisite = $this->repositoryrapport->find($rapportvisite);
         return $this->render('compte_rendu/show.html.twig', [
             'rapportvisite' => $rapportvisite,
@@ -53,13 +57,13 @@ class CompteRenduController extends AbstractController
     public function create(Request $request)
     {
         $rapportvisite= new RapportVisite();
-        $form = $this->createForm(RapportVisiteType::class);
+        $form = $this->createForm(RapportVisiteType::class, $rapportvisite);
         $form->handleRequest($request);
 
         if($form->isSubmitted()&& $form->isValid()){
             $this->em->persist($rapportvisite);
             $this->em->flush();
-            return $this->redirectToRoute('compte_rendu/index.html.twig');
+            return $this->redirectToRoute('compte_rendu');
         }
       return $this->render('compte_rendu/create.html.twig', [
       'rapportvisite'=> $rapportvisite,

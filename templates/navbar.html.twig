@@ -1,133 +1,64 @@
- <!-- This example requires Tailwind CSS v2.0+ -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
+<!-- This example requires Tailwind CSS v2.0+ -->
+<link
+rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
 
 <!-- This is an example component -->
 <div
-  class="bg-grayDark"
-x-data="{ atTop: true }"
-x-on:scroll.window="atTop =( window.pageYOffset > 10) ? false : true "
- >
-<!-- Navbar -->
-<div
-  class="w-full text-green-500 bg-gray-900 h-16 fixed top-0 animated z-40"
-  x-bind:class='{ "bg-black shadow-lg": !atTop }'
->
-  <div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-2 mx-auto md:items-center md:justify-between md:flex-row">
-    <div class="p-4 flex flex-row items-center justify-between">
-      <a href="{{ path('logout') }}" class="tracking-widest rounded-lg focus:outline-none focus:shadow-outline">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-      </svg>
-      </a>
-      <!-- Button Mobile Nav -->
-      <button
-        class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
-        <span class="text-lg text-primary"
-          ><i class="fas fa-bars"></i
-        ></span>
-      </button>
-      <!-- End Button Mobile Nav -->
-    </div>
+	class="bg-grayDark" x-data="{ atTop: true }" x-on:scroll.window="atTop =( window.pageYOffset > 10) ? false : true ">
+	<!-- Navbar -->
+	<div class="w-full text-green-500 bg-gray-900 h-16 fixed top-0 animated z-40" x-bind:class='{ "bg-black shadow-lg": !atTop }'>
+		<div x-data="{ open: false }" class="flex flex-col max-w-screen-xl px-2 mx-auto md:items-center md:justify-between md:flex-row">
+			<div class="p-4 flex flex-row items-center justify-between">
+				<a href="{{ path('logout') }}" class="tracking-widest rounded-lg focus:outline-none focus:shadow-outline">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewbox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+					</svg>
+				</a>
+				<!-- Button Mobile Nav -->
+				<button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+					<span class="text-lg text-primary">
+						<i class="fas fa-bars"></i>
+					</span>
+				</button>
+				<!-- End Button Mobile Nav -->
+			</div>
 
 
+			<!-- Navbar Mobile -->
+			<nav :class="{'flex': open, 'hidden': !open}" class="flex-col flex-grow pb-4 hidden bg-gray-900 shadow-lg rounded-b">
+				<a class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ path('compte_rendu') }}">Compte-rendu</a>
+				<a class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ path('praticien') }}">Liste des praticiens</a>
+				<a class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ path('compte_rendu_create') }}">Ajouter Compte-rendu</a>
+				<a class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ path('logout') }}">Déconnexion</a>
+			</nav>
+			<!-- End Navbar Mobile -->
+			<nav class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row bg-gray-900">
 
-    <!-- Navbar Mobile -->
-    <nav
-      :class="{'flex': open, 'hidden': !open}"
-      class="flex-col flex-grow pb-4 hidden bg-gray-900 shadow-lg rounded-b"
-    >
-      <a
-        class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-        href="{{ path('compte_rendu') }}"
-        >Compte-rendu</a
-      >
-      <a
-      class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-      href="{{ path('praticien') }}"
-      >Liste des praticiens</a
-    >
-    <a
-    class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-    href="{{ path('logout') }}"
-    >Déconnexion</a
-  >
-    </nav>
-    <!-- End Navbar Mobile -->
-    <nav
-      class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row bg-gray-900"
-    >
+				<div @click.away="open = false" class="relative" x-data="{ open: false }">
+					<button @click="open = !open" class="flex flex-row items-center w-full px-3 py-1 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:mt-0 md:ml-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+						<span class="text-lg text-primary">
+							<i class="fas fa-bars"></i>
+						</span>
+					</button>
+					<div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+						<div class="px-2 py-2 bg-gray-900 rounded-md shadow">
+							<a class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ path('compte_rendu') }}">Compte-rendu</a>
+							<a class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ path('praticien') }}">Liste des praticiens</a>
+							<a class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ path('compte_rendu_create') }}">Ajouter Compte-rendu</a>
 
-      <div
-        @click.away="open = false"
-        class="relative"
-        x-data="{ open: false }"
-      >
-        <button
-          @click="open = !open"
-          class="flex flex-row items-center w-full px-3 py-1 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg md:w-auto md:mt-0 md:ml-2 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-        >
-          <span class="text-lg text-primary"
-            ><i class="fas fa-bars"></i
-          ></span>
-        </button>
-        <div
-          x-show="open"
-          x-transition:enter="transition ease-out duration-100"
-          x-transition:enter-start="transform opacity-0 scale-95"
-          x-transition:enter-end="transform opacity-100 scale-100"
-          x-transition:leave="transition ease-in duration-75"
-          x-transition:leave-start="transform opacity-100 scale-100"
-          x-transition:leave-end="transform opacity-0 scale-95"
-          class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48"
-        >
-          <div class="px-2 py-2 bg-gray-900 rounded-md shadow">
-            <a
-              class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-              href="{{ path('compte_rendu') }}"
-              >Compte-rendu</a
-            >
-            <a
-              class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-              href="{{ path('praticien') }}"
-              >Liste des praticiens</a
-            >
-            <a
-            class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-            href="{{ path('logout') }}"
-            >Déconnexion</a
-          >
-          </div>
-        </div>
-      </div>
-      <div
-        @click.away="open = false"
-        class="relative"
-        x-data="{ open: false }"
-      >
+							<a class="block px-4 py-2 mt-2  bg-transparent rounded-lg  text-sm font-semibold md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{ path('logout') }}">Déconnexion</a>
+						</div>
+					</div>
+				</div>
+				<div @click.away="open = false" class="relative" x-data="{ open: false }">
 
-        <div
-          x-show="open"
-          x-transition:enter="transition ease-out duration-100"
-          x-transition:enter-start="transform opacity-0 scale-95"
-          x-transition:enter-end="transform opacity-100 scale-100"
-          x-transition:leave="transition ease-in duration-75"
-          x-transition:leave-start="transform opacity-100 scale-100"
-          x-transition:leave-end="transform opacity-0 scale-95"
-          class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48"
-        >
-         
-        </div>
-      </div>
-    </nav>
-  </div>
-</div>
-<!-- End Navbar -->
-<div class="w-full  md:pl-4 lg:pl-10 md:pr-4 flex self-start flex-col mt-20">
-
-</div>
+					<div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48"></div>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<!-- End Navbar -->
+	<div class="w-full  md:pl-4 lg:pl-10 md:pr-4 flex self-start flex-col mt-20"></div>
 </div>
 
-<script
-src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
-defer
-></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>

@@ -6,7 +6,7 @@
 
 {% block content %}
 
-	<div class="bg-gray-200 m-10 border-2 border-gray-900">
+	<div class="bg-blue-300 m-10 border-2 border-gray-900">
 
 		<div
 			class="grid grid-cols-8 gap-10">
@@ -51,7 +51,7 @@
 				<div class="bg-white border-2 border-gray-400">
 
 					<div class="m-3">
-						<table class="table-auto w-full">
+						<table class="table-auto w-full overflow-y-auto">
 							{% for rapportvisite in rapportvisites %}
 								<tr
 									class="">
@@ -66,17 +66,22 @@
 
 
 									<td class="border border-black p-1 ">
-										<p class="flex justify-center">Date Visite</p>
+										<p class="flex justify-center">{{rapportvisite.dateVisite}}</p>
 									</td>
 
 
 									<td class="border border-black p-1 ">
-										<p class="flex justify-center">Date Rédaction</p>
+										<p class="flex justify-center">{{rapportvisite.dateRapport}}</p>
 									</td>
 
 
 									<td class="border border-black p-1 ">
-										<p class="flex justify-center">Lu</p>
+										<p class="flex justify-center">
+											{% if rapportvisite.etat %}Lu
+											{% else %}
+												Non lu
+											{% endif %}
+										</p>
 									</td>
 
 

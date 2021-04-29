@@ -6,10 +6,10 @@
 
 {% block content %}
 
-	<div class="bg-gray-300 m-10 border-2 border-gray-500">
+	<div class="bg-blue-300 m-10 border-2 border-gray-500">
 
 		<div class="grid grid-cols-8">
-			<p class="p-2">
+			<p class="p-2 text-lg">
 				Trier par :
 			</p>
 
@@ -24,13 +24,13 @@
 			class="grid grid-cols-4 m-5 bg-white p-2 border-2 border-gray-400">
 			<!-- 1 -->
 			<div>
-				<div class="flex justify-center border-b border-t border-r border-gray-700">
+				<div class="flex justify-center border-b border-l border-t border-r border-gray-700">
 					<p>Nom</p>
 				</div>
 				<!-- foreach -->
 				{% for praticien in praticiens %}
 
-					<div class="flex justify-center border-b border-r border-gray-700">
+					<div class="flex justify-center border-b border-l border-r border-gray-700">
 						<p>{{praticien.nom}}</p>
 					</div>
 				{% endfor %}
